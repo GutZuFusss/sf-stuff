@@ -14,9 +14,15 @@ pub async fn main() {
 
 fn greet_character(char: Character) {
     println!(
-        "Logged in as {} (Level:{} -XP: {}/{})",
-        char.name, char.level, char.experience, char.next_level_xp
+        "Logged in as {} (Level: {} - XP: {}/{})",
+        char.name, char.level, char.experience, char.next_level_xp,
     );
-    println!("Shrooms: {}", char.mushrooms);
-    println!("Silver: {}", char.silver);
+    println!("Shrooms:     {}", char.mushrooms);
+    println!("Gold:        {}", char.silver / 100);
+    println!("Rank:        {}", char.rank);
+    println!(
+        "Scrapbook:   {}",
+        char.scrapbok.unwrap().items.len()
+            + char.scrapbok.unwrap().monsters.len()
+    );
 }

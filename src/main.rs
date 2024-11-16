@@ -10,6 +10,9 @@ pub async fn main() {
     let gs = session.game_state().unwrap();
     let char = gs.character.clone();
     greet_character(char);
+
+    // for now, theres just fortress automation
+    fortress::run_fortress(&gs).await;
 }
 
 fn greet_character(char: Character) {
@@ -22,7 +25,7 @@ fn greet_character(char: Character) {
     println!("Rank:        {}", char.rank);
     println!(
         "Scrapbook:   {}",
-        char.scrapbok.unwrap().items.len()
-            + char.scrapbok.unwrap().monsters.len()
+        char.scrapbok.as_ref().unwrap().items.len()
+            + char.scrapbok.as_ref().unwrap().monster.len()
     );
 }
